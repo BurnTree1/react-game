@@ -1,20 +1,19 @@
 import React from 'react';
 import {connect} from "react-redux"
-import {musicOff} from 'Actions';
-import gif from './images/taptap.gif'
-function App({music, musicOff}) {
-  return (
-    <div>
-      Musics 1: {music}
-      <button onClick={musicOff}>
-          click me
-      </button>
-        <img src={gif} alt="tap tap..."/>
-    </div>
-  );
+import Head from "./components/Head/Head";
+import Body from "./components/Body/Body";
+import {Box} from "@material-ui/core";
+
+
+function App({width}) {
+    return (
+        <Box m="auto" width={width}>
+            <Head/>
+            <Body/>
+        </Box>
+    );
 }
 
 export default connect(
-    ({settings}) => ({music: settings.music}),
-    (dispatch) => ({musicOff: ()=> dispatch(musicOff())})
+    ({body, settings}) => ({width: settings.tileSize * body.width})
 )(App);
