@@ -1,0 +1,13 @@
+.tile {
+    border-radius: 0 !important;
+    background-color: darkcyan;
+    padding: 0;
+}
+
+.not-open-tile {
+    background-color: darkcyan;
+}
+
+.open-tile {
+    background-color: white;
+}

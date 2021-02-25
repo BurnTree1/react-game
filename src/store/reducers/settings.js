@@ -3,7 +3,10 @@ import {MUSIC_OFF} from "Actions";
 
 const initSettings = {
     tileSize: 50,
-    music: "on"
+    music: "on",
+    height: 10,
+    width: 10,
+    bugs: 10
 }
 
 const handlers = {

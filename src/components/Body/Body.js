@@ -6,9 +6,9 @@ import Tile from "./Tile/Tile";
 function Body({matrix}) {
     return (
         <div>
-            {_.map(matrix, (array, wKey) =>
-                <div key={wKey}>
-                    {_.map(array, (element, hKey) => <Tile key={hKey} element={element}/>)}
+            {_.map(matrix, (array, i) =>
+                <div key={i}>
+                    {_.map(array, (element, j) => <Tile key={j} i={i} j={j} element={element}/>)}
                     <br/>
                 </div>)}
         </div>
