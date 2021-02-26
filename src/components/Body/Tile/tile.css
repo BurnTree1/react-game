@@ -1,6 +1,5 @@
 .tile {
     border-radius: 0 !important;
-    background-color: darkcyan;
     padding: 0;
 }
 
@@ -10,4 +9,8 @@
 
 .open-tile {
     background-color: white;
+}
+
+.end-bug-tile {
+    background-color: red;
 }

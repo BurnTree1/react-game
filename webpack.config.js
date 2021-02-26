@@ -11,7 +11,8 @@ module.exports = {
     },
     resolve: {
         alias: {
-            Actions: path.resolve(__dirname, 'src/store/actions/')
+            Actions: path.resolve(__dirname, 'src/store/actions/'),
+            Helpers: path.resolve(__dirname, 'src/store/helpers/')
         }
     },
     module: {

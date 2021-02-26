@@ -1,18 +1,23 @@
 import _ from "lodash"
-import {START_GAME, GAME_OVER} from "Actions";
+import {REFRESH_GAME, START_GAME, GAME_OVER} from "Actions";
+import {GAME_READY, GAME_END, GAME_IN_PROGRESS} from "Helpers"
 
 const initProcess = {
-    tileSize: 50,
-    music: "on",
-    activity: ""
+    activity: "",
 }
 
 const handlers = {
-    [START_GAME]: () => ({
-
+    [REFRESH_GAME]: (process) => ({
+        ...process,
+        activity: GAME_READY
     }),
-    [GAME_OVER]: () => ({
-
+    [START_GAME]: (process) => ({
+        ...process,
+        activity: GAME_IN_PROGRESS
+    }),
+    [GAME_OVER]: (process) => ({
+        ...process,
+        activity: GAME_END
     })
 }
 

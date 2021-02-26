@@ -1,5 +1,5 @@
 import _ from "lodash"
-import {INIT_BODY, OPEN_TILE} from "Actions";
+import {FLAG_TILE, INIT_BODY, OPEN_TILE} from "Actions";
 
 const initBody = {
     height: 10,
@@ -15,6 +15,11 @@ const handlers = {
     [OPEN_TILE]: (body, {i,j}) => {
         const resultBody = _.cloneDeep(body)
         resultBody.field[i][j].isOpen = true
+        return resultBody
+    },
+    [FLAG_TILE]: (body, {i,j}) => {
+        const resultBody = _.cloneDeep(body)
+        resultBody.field[i][j].isFlag = !body.field[i][j].isFlag
         return resultBody
     }
 }
