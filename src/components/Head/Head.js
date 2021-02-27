@@ -1,34 +1,26 @@
 import React from 'react';
 import {connect} from "react-redux";
-import {refreshGame} from "Actions";
-import {Grid, IconButton} from "@material-ui/core";
-import {Equalizer, Settings, SettingsBackupRestore} from '@material-ui/icons';
+import {Grid} from "@material-ui/core";
+import ActionButtons from "./ActionButtons/ActionButtons";
+import Info from "./Info/Info";
+import Cat from "./Cat/Cat";
 
 function Head({start}) {
     return (
         <div>
             <Grid container>
                 <Grid item xs>
+                    <Info/>
                 </Grid>
                 <Grid item xs>
-                    {/*<img src={gif} width={100} height={100} alt="tap tap..."/>*/}
+                    <Cat/>
                 </Grid>
                 <Grid item xs>
-                    <IconButton onClick={() => start()}>
-                        <SettingsBackupRestore/>
-                    </IconButton>
-                    <IconButton>
-                        <Equalizer/>
-                    </IconButton>
-                    <IconButton>
-                        <Settings/>
-                    </IconButton>
+                    <ActionButtons/>
                 </Grid>
             </Grid>
         </div>
     );
 }
 
-export default connect(
-    (state) => ({}),
-    (dispatch) => ({start: () => dispatch(refreshGame())}))(Head);
+export default connect()(Head);

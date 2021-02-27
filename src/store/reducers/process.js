@@ -1,9 +1,10 @@
 import _ from "lodash"
-import {REFRESH_GAME, START_GAME, GAME_OVER} from "Actions";
-import {GAME_READY, GAME_END, GAME_IN_PROGRESS} from "Helpers"
+import {REFRESH_GAME, START_GAME, GAME_OVER, SET_TIME, WIN} from "Actions";
+import {GAME_READY, GAME_END, GAME_IN_PROGRESS, GAME_WIN} from "Helpers"
 
 const initProcess = {
     activity: "",
+    time: 0,
 }
 
 const handlers = {
@@ -18,6 +19,14 @@ const handlers = {
     [GAME_OVER]: (process) => ({
         ...process,
         activity: GAME_END
+    }),
+    [WIN] : (process) => ({
+        ...process,
+        activity: GAME_WIN
+    }),
+    [SET_TIME]: (process, {time}) => ({
+        ...process,
+        time: time
     })
 }
 

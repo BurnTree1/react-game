@@ -23,6 +23,7 @@ export const initBody = () => (dispatch, getState) => {
 
     const checkBugs = (i, j) => {
         let count = 0
+        if (field[i][j].isBug) count++
         if (i > 0 && field[i - 1][j].isBug) count++
         if (i > 0 && j > 0 && field[i - 1][j - 1].isBug) count++
         if (i > 0 && j < width - 1 && field[i - 1][j + 1].isBug) count++
@@ -54,27 +55,62 @@ export const initBody = () => (dispatch, getState) => {
     for (let i = 0; i < height; i++)
         for (let j = 0; j < width; j++)
             field[i][j].nearBugCount = checkBugs(i, j);
-
-    dispatch({
-        type: INIT_BODY,
-        payload: {height, width, field}
-    })
+    dispatch(generateBody(height, width, bugs, field))
 }
+
+const generateBody = (height, width, bugs, field) => ({
+    type: INIT_BODY,
+    payload: {height, width, bugs, field}
+})
 
 export const clickTile = (i, j) => (dispatch, getState) => {
     const {process: {activity}, body: {field}} = getState()
+    const tile = field[i][j]
+    if (!tile.isFlag) {
+        if (activity === GAME_READY)
+            dispatch(startGame())
+        if (activity === GAME_READY || activity === GAME_IN_PROGRESS)
+            if (tile.isBug)
+                dispatch(gameOver())
+            else
+                (tile.nearBugCount === 0) ? dispatch(reverseOpen(i, j)) : dispatch(openTile(i, j))
+    }
+    //TODO need refactoring
+}
+
+
+export const clickFlagTile = (i, j) => (dispatch, getState) => {
+    const {process: {activity}} = getState()
     if (activity === GAME_READY)
         dispatch(startGame())
     if (activity === GAME_READY || activity === GAME_IN_PROGRESS)
-        dispatch(openTile(i,j))
-    if(field[i][j].isBug)
-        dispatch(gameOver())
+        dispatch(flagTile(i, j))
 }
 
-export const flagTile = (i,j) => ({
+const flagTile = (i, j) => ({
     type: FLAG_TILE,
     payload: {i, j}
 })
+
+const reverseOpen = (i, j) => (dispatch, getState) => {
+    const {body: {width, height, field}} = getState()
+    dispatch(openTile(i, j))
+
+    const check = (x, y) => {
+        const tile = field[x][y]
+        if (!tile.isOpen)
+            (tile.nearBugCount === 0) ? dispatch(reverseOpen(x, y)) : dispatch(openTile(x, y))
+    }
+
+    if (i > 0) check(i - 1, j)
+    if (i > 0 && j > 0) check(i - 1, j - 1)
+    if (i > 0 && j < width - 1) check(i - 1, j + 1)
+    if (j > 0) check(i, j - 1)
+    if (j < width - 1) check(i, j + 1)
+    if (i < height - 1) check(i + 1, j)
+    if (i < height - 1 && j > 0) check(i + 1, j - 1)
+    if (i < height - 1 && j < width - 1) check(i + 1, j + 1)
+}
 
 export const openTile = (i, j) => ({
     type: OPEN_TILE,

@@ -12,6 +12,7 @@ module.exports = {
     resolve: {
         alias: {
             Actions: path.resolve(__dirname, 'src/store/actions/'),
+            Assets: path.resolve(__dirname, 'src/assets/'),
             Helpers: path.resolve(__dirname, 'src/store/helpers/')
         }
     },
@@ -35,6 +36,10 @@ module.exports = {
                         loader: 'file-loader',
                     },
                 ],
+            },
+            {
+                test: /\.mp4$/,
+                use: 'file-loader?name=videos/[name].[ext]',
             },
         ]
     },
