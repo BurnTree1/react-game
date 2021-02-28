@@ -2,7 +2,6 @@ import React, {useState} from 'react';
 import {connect} from "react-redux";
 import {clickTile, clickFlagTile} from "Actions";
 import {BugReport, ErrorOutline} from "@material-ui/icons";
-import './tile.css'
 import {GAME_END, colorCodes} from "Helpers";
 
 function Tile({element: {isBug, isFlag, isOpen, nearBugCount}, size, i, j, activity, open, flag}) {
@@ -24,20 +23,16 @@ function Tile({element: {isBug, isFlag, isOpen, nearBugCount}, size, i, j, activ
         <button className="tile not-open-tile"
                 style={{height: size, width: size, color: (!isFlag) ? "transparent" : "black"}}
                 onClick={onOpen} onContextMenu={onFlag}>
-            <span>
                 {(isFlag) ? <ErrorOutline/> : "C"}
-            </span>
         </button>
     const openTemplate =
         <button className="tile open-tile" style={{height: size, width: size, color: colorCodes[nearBugCount]}}>
-            <span>{nearBugCount}</span>
+            {nearBugCount}
         </button>
     const bugTemplate =
         <button className={`tile ${(isLast) ? "end-bug-tile" : "open-tile"}`}
                 style={{height: size, width: size}}>
-            <span>
                 <BugReport size="medium"/>
-            </span>
         </button>
 
     if (isBug && (activity === GAME_END || isOpen)) return bugTemplate

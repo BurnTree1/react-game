@@ -1,3 +1,22 @@
+.timer {
+    text-align: center;
+}
+
+.bug-counter {
+    text-align: center;
+}
+
+.cat {
+    object-fit: cover;
+    width: 100%;
+    height: 250px;
+}
+
+.head {
+    background-color: white;
+    border: 2px solid #dedcdc;
+}
+
 .tile {
     border-radius: 0 !important;
     padding: 0;

@@ -1,13 +1,15 @@
 import _ from "lodash"
-import {REFRESH_GAME, START_GAME, GAME_OVER, SET_TIME, WIN} from "Actions";
+import {REFRESH_GAME, START_GAME, GAME_OVER, SET_TIME, WIN, INIT_PROCESS} from "Actions";
 import {GAME_READY, GAME_END, GAME_IN_PROGRESS, GAME_WIN} from "Helpers"
 
 const initProcess = {
     activity: "",
     time: 0,
+    score: []
 }
 
 const handlers = {
+    [INIT_PROCESS]: (current, {process}) => process,
     [REFRESH_GAME]: (process) => ({
         ...process,
         activity: GAME_READY

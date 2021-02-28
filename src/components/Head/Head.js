@@ -1,19 +1,18 @@
 import React from 'react';
-import {connect} from "react-redux";
 import {Grid} from "@material-ui/core";
 import ActionButtons from "./ActionButtons/ActionButtons";
-import Info from "./Info/Info";
-import Cat from "./Cat/Cat";
+import BugCounter from "./BugCounter/BugCounter";
+import Time from "./Time/Time";
 
-function Head({start}) {
+function Head() {
     return (
-        <div>
+        <div className="head">
             <Grid container>
                 <Grid item xs>
-                    <Info/>
+                    <BugCounter/>
                 </Grid>
                 <Grid item xs>
-                    <Cat/>
+                    <Time/>
                 </Grid>
                 <Grid item xs>
                     <ActionButtons/>
@@ -23,4 +22,4 @@ function Head({start}) {
     );
 }
 
-export default connect()(Head);
+export default Head;

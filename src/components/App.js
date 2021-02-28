@@ -1,41 +1,27 @@
-import React, {useEffect, useState} from 'react';
+import React from 'react';
 import {connect} from "react-redux"
 import Head from "./Head/Head";
 import Body from "./Body/Body";
 import {Box} from "@material-ui/core";
-import {refreshGame} from "Actions";
-import {GAME_END} from "Helpers";
-import WinModal from "./Modals/WinModal";
+import LoseModal from "./Modals/LoseModal";
+import SaveAndLoad from "./SaveAndLoad";
+import Cat from "./Cat/Cat";
 
 
-function App({width, isWin, start}) {
-
-    const [winOpen, setWinOpen] = useState(false);
-
-    useEffect(() => {
-        start()
-    }, [])
-
-    useEffect(() => {
-        setWinOpen(isWin)
-    }, [isWin])
-
+function App({width}) {
     return (
         <Box m="auto" width={width}>
+            <Cat/>
             <Head/>
             <Body/>
-            <WinModal isOpen={winOpen} closeWindow={() => setWinOpen(false)}/>
+            <LoseModal/>
+            <SaveAndLoad/>
         </Box>
     );
 }
 
-const mapStateToProps = ({body, settings, process: {activity}}) => ({
+const mapStateToProps = ({body, settings}) => ({
     width: settings.tileSize * body.width,
-    isWin: activity === GAME_END
 })
 
-const mapDispatchToProps = (dispatch) => ({
-    start: () => dispatch(refreshGame())
-})
-
-export default connect(mapStateToProps, mapDispatchToProps)(App);
+export default connect(mapStateToProps)(App);

@@ -16,8 +16,10 @@ const tileTemplate = {
 const getRandomInt = (min, max) => Math.floor(Math.random() * (max - min)) + min;
 
 export const initBody = () => (dispatch, getState) => {
-    const {settings: {height, width, bugs}} = getState()
-
+    const {settings: {size, difficulty}} = getState()
+    let height = size;
+    let width = size;
+    const bugs = Math.floor((height * width * difficulty) / 100);
     let unusedBugs = bugs;
     let field = []
 
@@ -55,12 +57,12 @@ export const initBody = () => (dispatch, getState) => {
     for (let i = 0; i < height; i++)
         for (let j = 0; j < width; j++)
             field[i][j].nearBugCount = checkBugs(i, j);
-    dispatch(generateBody(height, width, bugs, field))
+    dispatch(generateBody({height, width, bugs, field}))
 }
 
-const generateBody = (height, width, bugs, field) => ({
+export const generateBody = (body) => ({
     type: INIT_BODY,
-    payload: {height, width, bugs, field}
+    payload: {body}
 })
 
 export const clickTile = (i, j) => (dispatch, getState) => {

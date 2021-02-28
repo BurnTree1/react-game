@@ -1,11 +1,18 @@
 import {initBody} from "Actions";
 
+export const INIT_PROCESS = "PROCESS/INIT"
+
 export const REFRESH_GAME = "PROCESS/REFRESH_GAME"
 export const START_GAME = "PROCESS/START_GAME"
 export const GAME_OVER = "PROCESS/GAME_OVER"
 export const WIN = "PROCESS/GAME_WIN"
 
 export const SET_TIME = "PROCESS/SET_TIME"
+
+export const initProcess = (process) => ({
+    type: INIT_PROCESS,
+    payload: {process}
+})
 
 export const refreshGame  = () => (dispatch) => {
     dispatch(initBody())

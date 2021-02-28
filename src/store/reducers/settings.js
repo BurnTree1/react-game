@@ -1,16 +1,19 @@
 import _ from "lodash"
-import {MUSIC_OFF} from "Actions";
+import {INIT_SETTINGS} from "Actions";
 
 const initSettings = {
     tileSize: 50,
-    music: "on",
-    height: 10,
-    width: 10,
-    bugs: 10
+    music: 0,
+    sound: 0,
+    size: 10,
+    difficulty: 10
 }
 
 const handlers = {
-    [MUSIC_OFF]: () => ({music: "off"}),
+    [INIT_SETTINGS]: (state, {settings}) => ({
+        ...state,
+        ...(settings)
+    })
 }
 
 export default (setting = initSettings, {type, payload}) => _.get(handlers, type, () => setting)(setting, payload)

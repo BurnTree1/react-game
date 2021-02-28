@@ -3,7 +3,7 @@ import wait from 'Assets/wait.gif'
 import win from 'Assets/win.gif'
 import inProgress from 'Assets/in_progress.gif'
 import {connect} from "react-redux";
-import {GAME_IN_PROGRESS, GAME_WIN} from "Helpers/index";
+import {GAME_IN_PROGRESS, GAME_WIN} from "Helpers";
 
 function Cat({activity}) {
     const [gif, setGif] = useState(wait)
@@ -22,8 +22,8 @@ function Cat({activity}) {
     }, [activity])
 
     return (
-        <div>
-            <img src={gif} height="200" width="200" alt="tap tap..."/>
+        <div style={{margin: "-50px 0 0 0 "}}>
+            <img className="cat" src={gif} alt="tap tap..."/>
         </div>
     );
 }

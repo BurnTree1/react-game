@@ -9,9 +9,9 @@ const initBody = {
 }
 
 const handlers = {
-    [INIT_BODY]: (body, {height, width, bugs, field}) => ({
-        ...body,
-        height, width, bugs, field
+    [INIT_BODY]: (state, {body}) => ({
+        ...state,
+        ...body
     }),
     [OPEN_TILE]: (body, {i, j}) => {
         const resultBody = _.cloneDeep(body)

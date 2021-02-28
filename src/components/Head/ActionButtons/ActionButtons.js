@@ -1,22 +1,26 @@
 import React from 'react';
-import { IconButton} from "@material-ui/core";
-import {Equalizer, Settings, SettingsBackupRestore} from "@material-ui/icons";
+import {IconButton, Grid} from "@material-ui/core";
+import {SettingsBackupRestore} from "@material-ui/icons";
 import {connect} from "react-redux";
 import {refreshGame} from "Actions";
+import Score from "./Score/Score";
+import Settings from "./Settings/Settings";
 
 function ActionButtons({start}) {
     return (
-        <div>
-            <IconButton onClick={() => start()}>
-                <SettingsBackupRestore/>
-            </IconButton>
-            <IconButton>
-                <Equalizer/>
-            </IconButton>
-            <IconButton>
+        <Grid container alignItems="center" style={{height: "100%"}}>
+            <Grid item xs>
+                <IconButton onClick={() => start()}>
+                    <SettingsBackupRestore/>
+                </IconButton>
+            </Grid>
+            <Grid item xs>
+                <Score/>
+            </Grid>
+            <Grid item xs>
                 <Settings/>
-            </IconButton>
-        </div>
+            </Grid>
+        </Grid>
     );
 }
 

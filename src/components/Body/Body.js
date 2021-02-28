@@ -15,8 +15,7 @@ function Body({matrix, tileSize}) {
 }
 
 const mapStateToProps = ({body: {field}, settings: {tileSize}}) => ({
-    matrix: field,
-    tileSize
+    matrix: field, tileSize
 })
 
 export default connect(mapStateToProps)(Body);

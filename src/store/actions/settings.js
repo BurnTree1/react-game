@@ -1,5 +1,6 @@
-export const MUSIC_OFF = "SETTINGS/MUSIC_OFF"
+export const INIT_SETTINGS = "SETTINGS/INIT"
 
-export const musicOff = () => ({
-  type: MUSIC_OFF
+export const initSettings = (settings) => ({
+  type: INIT_SETTINGS,
+  payload: {settings}
 })
