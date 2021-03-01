@@ -6,6 +6,7 @@ import {Box} from "@material-ui/core";
 import LoseModal from "./Modals/LoseModal";
 import SaveAndLoad from "./SaveAndLoad";
 import Cat from "./Cat/Cat";
+import MusicPlayer from "./MusicPlayer/MusicPlayer";
 
 
 function App({width}) {
@@ -16,6 +17,7 @@ function App({width}) {
             <Body/>
             <LoseModal/>
             <SaveAndLoad/>
+            <MusicPlayer/>
         </Box>
     );
 }

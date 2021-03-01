@@ -1,28 +1,31 @@
 import React, {useEffect, useRef, useState} from 'react';
 import {Dialog} from "@material-ui/core";
-import boom from "Assets/boom.mp4";
+import {videoGameOver} from "Assets";
 import {GAME_END} from "Helpers/index";
 import {connect} from "react-redux";
 
-function LoseModal({isWin}) {
+function LoseModal({isEnd, volume}) {
     const [open, setOpen] = useState(false);
     const video = useRef()
 
-    useEffect(() => {
-        setOpen(isWin)
-    }, [isWin])
+    useEffect(() => {setOpen(false)},[])
+
+    useEffect(() => {setOpen(isEnd)}, [isEnd])
 
     const setVolume = () =>
-        document.getElementById('lose_video').volume = 0.2
+        document.getElementById('lose_video').volume = 0.5 * volume
 
     return (
         <Dialog open={open} fullWidth>
             <video ref={video} id="lose_video" onLoadStart={setVolume}
-                   autoPlay muted onEnded={() => setOpen(false)}>>
-                <source src={boom} type="video/mp4"/>
+                   autoPlay onEnded={() => setOpen(false)}>>
+                <source src={videoGameOver} type="video/mp4"/>
             </video>
         </Dialog>
     );
 }
 
-export default connect(({process: {activity}}) => ({isWin: activity === GAME_END}))(LoseModal);
+export default connect(
+    ({process: {activity}, settings: {sound}}) =>
+        ({isEnd: activity === GAME_END, volume: sound/100}))
+(LoseModal);

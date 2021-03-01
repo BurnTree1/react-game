@@ -3,8 +3,8 @@ import {INIT_SETTINGS} from "Actions";
 
 const initSettings = {
     tileSize: 50,
-    music: 0,
-    sound: 0,
+    music: 100,
+    sound: 100,
     size: 10,
     difficulty: 10
 }
@@ -12,7 +12,7 @@ const initSettings = {
 const handlers = {
     [INIT_SETTINGS]: (state, {settings}) => ({
         ...state,
-        ...(settings)
+        ...settings
     })
 }
 

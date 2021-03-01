@@ -1,23 +1,21 @@
 import React, {useEffect, useState} from 'react';
-import wait from 'Assets/wait.gif'
-import win from 'Assets/win.gif'
-import inProgress from 'Assets/in_progress.gif'
 import {connect} from "react-redux";
+import {catWait, catInProgress, catWin} from 'Assets'
 import {GAME_IN_PROGRESS, GAME_WIN} from "Helpers";
 
 function Cat({activity}) {
-    const [gif, setGif] = useState(wait)
+    const [gif, setGif] = useState(catWait)
 
     useEffect(() => {
         switch (activity) {
             case GAME_IN_PROGRESS:
-                setGif(inProgress);
+                setGif(catInProgress);
                 break;
             case GAME_WIN:
-                setGif(win);
+                setGif(catWin);
                 break;
             default:
-                setGif(wait)
+                setGif(catWait)
         }
     }, [activity])
 

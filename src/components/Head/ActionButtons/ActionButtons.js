@@ -5,12 +5,21 @@ import {connect} from "react-redux";
 import {refreshGame} from "Actions";
 import Score from "./Score/Score";
 import Settings from "./Settings/Settings";
+import useSound from "use-sound";
+import {soundButton} from "Assets"
 
-function ActionButtons({start}) {
+function ActionButtons({volume, startGame}) {
+    const [clickSoundPlay] = useSound(soundButton, {volume: volume* 0.3})
+
+    const refresh = () => {
+        startGame()
+        clickSoundPlay()
+    }
+
     return (
         <Grid container alignItems="center" style={{height: "100%"}}>
             <Grid item xs>
-                <IconButton onClick={() => start()}>
+                <IconButton onClick={refresh}>
                     <SettingsBackupRestore/>
                 </IconButton>
             </Grid>
@@ -24,4 +33,5 @@ function ActionButtons({start}) {
     );
 }
 
-export default connect(null, (dispatch) => ({start: () => dispatch(refreshGame())}))(ActionButtons);
+export default connect(({settings: {sound}})=> ({volume: sound/100}),
+    (dispatch) => ({startGame: () => dispatch(refreshGame())}))(ActionButtons);

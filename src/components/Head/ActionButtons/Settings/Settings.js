@@ -37,12 +37,15 @@ function Settings({settings, saveSettings}) {
     const openModal = () => {
         setSize(settings.size)
         setDifficulty(settings.difficulty)
+        setSound(settings.sound)
+        setMusic(settings.music)
         setOpen(true)
     }
+
     const closeModal = () => setOpen(false)
 
     const save = () => {
-        saveSettings({size, difficulty})
+        saveSettings({size, difficulty, music, sound})
         closeModal()
     }
 
@@ -53,9 +56,11 @@ function Settings({settings, saveSettings}) {
             </IconButton>
             <Dialog open={open} onClose={closeModal} fullWidth maxWidth={"sm"}>
                 <DialogTitle>
-                    <Typography variant="h3" align="center">
-                        Settings
-                    </Typography>
+                    <div>
+                        <Typography variant="h3" align="center">
+                            Settings
+                        </Typography>
+                    </div>
                 </DialogTitle>
 
                 <Container>
@@ -70,6 +75,12 @@ function Settings({settings, saveSettings}) {
                                          min={10}
                                          max={20}
                                          onChange={setSize}/>
+                        <SliderComponent label="Music"
+                                         value={music}
+                                         onChange={setMusic}/>
+                        <SliderComponent label="Sound"
+                                         value={sound}
+                                         onChange={setSound}/>
                     </DialogContent>
                     <DialogActions>
                         <Button autoFocus onClick={closeModal} color="secondary">

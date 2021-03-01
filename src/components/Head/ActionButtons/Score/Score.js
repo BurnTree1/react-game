@@ -22,12 +22,14 @@ function Score() {
             </IconButton>
             <Dialog open={open} onClose={closeModal} fullWidth maxWidth={"sm"}>
                 <DialogTitle>
-                    <Typography variant="h3" align="center">
-                        Score
-                    </Typography>
-                    <IconButton aria-label="close" onClick={closeModal}>
-                        <Close/>
-                    </IconButton>
+                    <div>
+                        <Typography variant="h3" align="center">
+                            Score
+                        </Typography>
+                        <IconButton aria-label="close" onClick={closeModal}>
+                            <Close/>
+                        </IconButton>
+                    </div>
                 </DialogTitle>
                 <DialogContent>
                     <Container>
