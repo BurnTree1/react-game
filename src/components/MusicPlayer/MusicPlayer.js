@@ -27,11 +27,11 @@ function MusicPlayer({volume}) {
     }
 
     return (
-        <div className="player">
-            <IconButton onClick={onClick}>
+        <div id="player">
+            <IconButton onClick={onClick} color="inherit">
                 {(isPlaying) ? <Pause/> : <PlayArrow/>}
             </IconButton>
-            <IconButton onClick={next}>
+            <IconButton onClick={next} color="inherit">
                 <SkipNext/>
             </IconButton>
         </div>

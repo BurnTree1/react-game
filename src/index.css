@@ -1,3 +1,15 @@
+html, body, #root{
+    height: 100%;
+}
+
+#root {
+    background-color: white;
+}
+
+.dark{
+    filter: invert(1);
+}
+
 .timer {
     text-align: center;
 }
@@ -24,7 +36,7 @@
 }
 
 .not-open-tile {
-    background-color: darkcyan;
+    background-color: #8cde91;
 }
 
 .open-tile {
@@ -34,8 +46,15 @@
 .end-bug-tile {
     background-color: red;
 }
+#mode-switcher {
+    position: absolute;
+    left: 100px;
+    top: 60px;
+    border: 2px black solid;
+    border-radius: 15px;
+}
 
-.player {
+#player {
     position: absolute;
     right: 100px;
     top: 60px;

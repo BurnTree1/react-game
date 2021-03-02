@@ -3,6 +3,9 @@ export const GAME_IN_PROGRESS = "GAME_IN_PROGRESS";
 export const GAME_END = "GAME_END";
 export const GAME_WIN = "GAME_WIN";
 
+export const DARK_MODE = "dark"
+export const LIGHT_MODE = "light"
+
 export const colorCodes = {
     0: "transparent",
     1: "limegreen",

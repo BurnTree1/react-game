@@ -4,7 +4,7 @@ import {Dialog, DialogTitle, Typography, Button, TextField} from "@material-ui/c
 import {GAME_WIN} from "Helpers";
 import {addToScoreTable, modalAreShowing} from "Actions";
 
-function WinModal({isWin, isCanShow, addToScore, disableShowingWindow}) {
+function WinModal({isWin, isCanShow, mode, addToScore, disableShowingWindow}) {
     const [open, setOpen] = useState(false);
     const [name, setName] = useState("Cool dude")
 
@@ -24,7 +24,7 @@ function WinModal({isWin, isCanShow, addToScore, disableShowingWindow}) {
     }
 
     return (
-        <Dialog open={open} onClose={closeWindow}>
+        <Dialog className={mode} open={open} onClose={closeWindow}>
             <DialogTitle>
                 <Typography variant="h5" align="center" paragraph>
                     Woooow.. you win
@@ -43,9 +43,10 @@ function WinModal({isWin, isCanShow, addToScore, disableShowingWindow}) {
 }
 
 export default connect(
-    ({process: {activity, isModalNeedShow}}) => ({
+    ({process: {activity, isModalNeedShow}, settings: {mode}}) => ({
         isWin: activity === GAME_WIN,
-        isCanShow: isModalNeedShow
+        isCanShow: isModalNeedShow,
+        mode
     }),
     (dispatch => ({
         addToScore: (name) => dispatch(addToScoreTable(name)),

@@ -38,11 +38,13 @@ function Tile({element: {isBug, isFlag, isOpen, nearBugCount}, size, i, j, activ
             {(isFlag) ? <ErrorOutline/> : "C"}
         </button>
     const openTemplate =
-        <button className="tile open-tile" style={{height: size, width: size, color: colorCodes[nearBugCount]}}>
+        <button className="tile open-tile" onContextMenu={(e) => e.preventDefault()}
+                style={{height: size, width: size, color: colorCodes[nearBugCount]}}>
             {nearBugCount}
         </button>
     const bugTemplate =
         <button className={`tile ${(isLast) ? "end-bug-tile" : "open-tile"}`}
+                onContextMenu={(e) => e.preventDefault()}
                 style={{height: size, width: size}}>
             <BugReport size="medium"/>
         </button>

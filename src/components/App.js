@@ -3,23 +3,26 @@ import {connect} from "react-redux"
 import Head from "./Head/Head";
 import Body from "./Body/Body";
 import {Box} from "@material-ui/core";
-import LoseModal from "./Modals/LoseModal";
-import SaveAndLoad from "./SaveAndLoad";
+import SaveAndLoad from "./SaveAndLoad/SaveAndLoad";
 import Cat from "./Cat/Cat";
 import MusicPlayer from "./MusicPlayer/MusicPlayer";
-import WinModal from "./Modals/WinModal";
+import {WinModal, LoseModal} from "./Modals";
+import ModeSwitch from "./ModeSwitch/ModeSwitch";
 
 function App({width}) {
     return (
-        <Box m="auto" width={width}>
-            <Cat/>
-            <Head/>
-            <Body/>
+        <div>
+            <Box m="auto" width={width}>
+                <Cat/>
+                <Head/>
+                <Body/>
+            </Box>
             <LoseModal/>
             <WinModal/>
             <SaveAndLoad/>
+            <ModeSwitch/>
             <MusicPlayer/>
-        </Box>
+        </div>
     );
 }
 

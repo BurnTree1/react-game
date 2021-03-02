@@ -43,7 +43,7 @@ function Settings({settings, saveSettings}) {
             <IconButton onClick={openModal}>
                 <SettingsIcon/>
             </IconButton>
-            <Dialog open={open} onClose={closeModal} fullWidth maxWidth={"sm"}>
+            <Dialog className={settings.mode} open={open} onClose={closeModal} fullWidth maxWidth={"sm"}>
                 <Container>
                     <DialogContent>
                         <CardComponent label="Game process" elements={[
