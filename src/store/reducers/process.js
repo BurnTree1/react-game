@@ -1,11 +1,21 @@
 import _ from "lodash"
-import {REFRESH_GAME, START_GAME, GAME_OVER, SET_TIME, WIN, INIT_PROCESS} from "Actions";
+import {
+    REFRESH_GAME,
+    START_GAME,
+    GAME_OVER,
+    SET_TIME,
+    WIN,
+    INIT_PROCESS,
+    ADD_TO_SCORE,
+    MODAL_WINDOWS_ARE_SHOWING
+} from "Actions";
 import {GAME_READY, GAME_END, GAME_IN_PROGRESS, GAME_WIN} from "Helpers"
 
 const initProcess = {
     activity: "",
     time: 0,
-    score: []
+    score: [],
+    isModalNeedShow: true
 }
 
 const handlers = {
@@ -16,6 +26,7 @@ const handlers = {
     }),
     [START_GAME]: (process) => ({
         ...process,
+        isModalNeedShow: true,
         activity: GAME_IN_PROGRESS
     }),
     [GAME_OVER]: (process) => ({
@@ -29,6 +40,13 @@ const handlers = {
     [SET_TIME]: (process, {time}) => ({
         ...process,
         time: time
+    }),
+    [ADD_TO_SCORE]: (process, {score}) => ({
+        ...process, score
+    }),
+    [MODAL_WINDOWS_ARE_SHOWING]: (process) => ({
+        ...process,
+        isModalNeedShow: false
     })
 }
 

@@ -2,11 +2,11 @@ import _ from "lodash"
 import {INIT_SETTINGS} from "Actions";
 
 const initSettings = {
-    tileSize: 50,
+    tileSize: 45,
     music: 100,
     sound: 100,
     size: 10,
-    difficulty: 10
+    difficulty: 1
 }
 
 const handlers = {

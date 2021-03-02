@@ -7,7 +7,7 @@ import LoseModal from "./Modals/LoseModal";
 import SaveAndLoad from "./SaveAndLoad";
 import Cat from "./Cat/Cat";
 import MusicPlayer from "./MusicPlayer/MusicPlayer";
-
+import WinModal from "./Modals/WinModal";
 
 function App({width}) {
     return (
@@ -16,6 +16,7 @@ function App({width}) {
             <Head/>
             <Body/>
             <LoseModal/>
+            <WinModal/>
             <SaveAndLoad/>
             <MusicPlayer/>
         </Box>

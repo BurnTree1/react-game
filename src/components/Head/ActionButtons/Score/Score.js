@@ -1,15 +1,19 @@
 import React, {useState} from 'react';
-import {
-    IconButton,
-    Dialog,
-    DialogTitle,
-    DialogContent,
-    Typography,
-    Container
-} from "@material-ui/core";
-import {Equalizer, Close} from "@material-ui/icons";
+import {connect} from "react-redux";
+import {Dialog, IconButton} from "@material-ui/core";
+import {Equalizer} from "@material-ui/icons";
+import {DataGrid} from '@material-ui/data-grid';
+import {timeToMinutes, difficultyName} from "Helpers";
 
-function Score() {
+const columns = [
+    {field: 'id', headerName: ' ', width: 50},
+    {field: 'name', headerName: 'Name', width: 170},
+    {field: 'difficulty', headerName: 'Difficulty', width: 170, valueGetter: ({row}) => difficultyName[row.difficulty]},
+    {field: 'time', headerName: 'Time', valueGetter: ({row}) => timeToMinutes(row.time)},
+    {field: 'size', headerName: 'Size'},
+]
+
+function Score({score}) {
     const [open, setOpen] = useState(false)
 
     const openModal = () => setOpen(true)
@@ -21,32 +25,10 @@ function Score() {
                 <Equalizer/>
             </IconButton>
             <Dialog open={open} onClose={closeModal} fullWidth maxWidth={"sm"}>
-                <DialogTitle>
-                    <div>
-                        <Typography variant="h3" align="center">
-                            Score
-                        </Typography>
-                        <IconButton aria-label="close" onClick={closeModal}>
-                            <Close/>
-                        </IconButton>
-                    </div>
-                </DialogTitle>
-                <DialogContent>
-                    <Container>
-                        <Typography variant="h3">
-                            1: 102 sec 20B 30x40
-                        </Typography>
-                        <Typography variant="h3">
-                            2: 102 sec 20B 30x40
-                        </Typography>
-                        <Typography variant="h3">
-                            3: 102 sec 20B 30x40
-                        </Typography>
-                    </Container>
-                </DialogContent>
+                <DataGrid rows={score} columns={columns} pageSize={5} autoHeight disableColumnMenu disableSelectionOnClick/>
             </Dialog>
         </div>
     );
 }
 
-export default Score;
+export default connect(({process: {score}}) => ({score}))(Score);

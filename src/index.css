@@ -42,3 +42,9 @@
     border: 2px black solid;
     border-radius: 15px;
 }
+
+.setting-card {
+    border: 2px black solid;
+    border-radius: 15px;
+    padding: 20px;
+}

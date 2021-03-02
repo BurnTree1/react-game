@@ -15,6 +15,15 @@ export const colorCodes = {
     8: "black"
 }
 
+export const difficultyName = ({
+    1: "Very easy",
+    2: "Easy",
+    3: "Medium",
+    4: "Hard",
+    5: "Very Hard",
+    6: "Impossible"
+})
+
 export function timeToMinutes(timeToSec) {
     if (timeToSec >= 599) return "9:59"
     const minute = Math.floor(timeToSec / 60);
