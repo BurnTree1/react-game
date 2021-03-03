@@ -8,6 +8,7 @@ import Cat from "./Cat/Cat";
 import MusicPlayer from "./MusicPlayer/MusicPlayer";
 import {WinModal, LoseModal} from "./Modals";
 import ModeSwitch from "./ModeSwitch/ModeSwitch";
+import Footer from "./Footer/Footer";
 
 function App({width}) {
     return (
@@ -22,6 +23,7 @@ function App({width}) {
             <SaveAndLoad/>
             <ModeSwitch/>
             <MusicPlayer/>
+            <Footer/>
         </div>
     );
 }
