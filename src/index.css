@@ -1,0 +1,69 @@
+html, body, #root{
+    height: 100%;
+}
+
+#root {
+    background-color: white;
+}
+
+.dark{
+    filter: invert(1);
+}
+
+.timer {
+    text-align: center;
+}
+
+.bug-counter {
+    text-align: center;
+}
+
+.cat {
+    object-fit: cover;
+    width: 100%;
+    height: 250px;
+}
+
+.head {
+    background-color: white;
+    border: 2px solid #dedcdc;
+}
+
+.tile {
+    border-radius: 0 !important;
+    padding: 0;
+    font-size: 25px;
+}
+
+.not-open-tile {
+    background-color: #8cde91;
+}
+
+.open-tile {
+    background-color: white;
+}
+
+.end-bug-tile {
+    background-color: red;
+}
+#mode-switcher {
+    position: absolute;
+    left: 100px;
+    top: 60px;
+    border: 2px black solid;
+    border-radius: 15px;
+}
+
+#player {
+    position: absolute;
+    right: 100px;
+    top: 60px;
+    border: 2px black solid;
+    border-radius: 15px;
+}
+
+.setting-card {
+    border: 2px black solid;
+    border-radius: 15px;
+    padding: 20px;
+}
